@@ -64,7 +64,7 @@ Start the server
 
 
 
-## Refer postman documentation for more APIs
+## Postman Documentation(for more APIS)
 https://documenter.getpostman.com/view/3522958/UyxhoT9i#e8a1d0ee-2326-4329-9848-acce4f03f7c1
 
 
