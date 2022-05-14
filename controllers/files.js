@@ -11,7 +11,7 @@ const shortid = require("shortid");
 exports.getFilesUploadedByAUser = async (req,res,next) => {
     try{
         let userId = req.user._id;
-        const files = await File.find({uploadedBy: userId});
+        const files = await File.find({uploadedBy: userId, isActive: true});
         res.status(200).send({success: true, data : files});
 
     }
@@ -34,6 +34,23 @@ exports.getFileDetails = async (req,res,next) => {
         res.status(200).send({success: true, data : file});
 
 
+    }
+    catch(err){
+        return next(new ErrorResponse(err, 400));
+
+    }
+}
+/**
+ *
+ * @desc Delete a File by Id
+ * @route DELETE /api/v1/file/:fileId
+ * @access private
+ */
+exports.deleteFile = async (req,res,next) => {
+    try{
+        let {fileId} = req.params;
+        const file = await File.findOneAndUpdate({_id: fileId}, {isActive: false});
+        res.status(200).send({success: true, data : file});
     }
     catch(err){
         return next(new ErrorResponse(err, 400));

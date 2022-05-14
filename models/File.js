@@ -26,6 +26,10 @@ const FileSchema = new mongoose.Schema({
         required: true,
         ref: 'User'
     },
+    isActive:{
+        type: Boolean,
+        default:true
+    },
     createdAt: {
         type: Date,
         default: Date.now,
